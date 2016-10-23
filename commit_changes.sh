@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "Copying over local .vimrc into repo and commiting with commit message:" 
 echo $1
 
