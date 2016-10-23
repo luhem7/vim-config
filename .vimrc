@@ -83,10 +83,6 @@ set lazyredraw
 " For regular expressions turn magic on
 set magic
 
-" Show matching brackets when text indicator is over them
-set showmatch 
-" How many tenths of a second to blink when matching brackets
-set mat=2
 
 " No annoying sound on errors
 set noerrorbells visualbell t_vb=
@@ -325,6 +321,17 @@ function! <SID>BufcloseCloseIt()
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Setting custom brackets matching options. No idea why has
+" to be at the bottom to actually work. Putting it higher up
+" is just ignoring it
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Show matching brackets when text indicator is over them
+set showmatch 
+" Bracket matching color options
+hi MatchParen cterm=underline ctermbg=none ctermfg=white
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim pathogen plugin
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 try
@@ -332,3 +339,6 @@ try
 catch
     echoerr 'Pathogen plugin not detected or misconfigured'
 endtry
+
+
+
