@@ -1,4 +1,12 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Windows git bash xterm mapping 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Mapping the <M-> shortcuts in vim to the actual characters 
+" sent by xterm in git bash on windows
+set <M-j>=j
+set <M-k>=k
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
@@ -320,4 +328,4 @@ endfunction
 " if has("autocmd")
 "   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 "endif
-" Testing auto commits
+"
