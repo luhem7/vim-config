@@ -19,11 +19,28 @@ set <M-k>=k
 " => General
 "------------------------------------------------------------------
 " Sets how many lines of history VIM has to remember
-set history=500
+if &history < 1000
+  set history=1000
+endif
+
+"Max number of tabs vim can open
+if &tabpagemax < 50
+  set tabpagemax=50
+endif
+
+"Use viminfo file
+if !empty(&viminfo)
+  set viminfo^=!
+endif
+
+"Options for mksession files
+set sessionoptions-=options
 
 " Enable filetype plugins
-filetype plugin on
-filetype indent on
+if has('autocmd')
+    filetype plugin on
+    filetype indent on
+endif
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -35,6 +52,16 @@ let mapleader = " "
 
 " Fast saving here
 nmap <leader>w :w!<cr>
+
+if has('path_extra')
+  setglobal tags-=./tags tags-=./tags; tags^=./tags;
+endif
+
+if &shell =~# 'fish$' && (v:version < 704 || v:version == 704 && !has('patch276'))
+  set shell=/bin/bash
+endif
+
+set autoread
 
 "------------------------------------------------------------------
 " => VIM user interface
@@ -91,7 +118,6 @@ set lazyredraw
 " For regular expressions turn magic on
 set magic
 
-
 " No annoying sound on errors
 set noerrorbells visualbell t_vb=
 if has('autocmd')
@@ -122,7 +148,9 @@ if has("gui_running")
 endif
 
 " Enable syntax highlighting
-syntax enable 
+if has('syntax') && !exists('g:syntax_on')
+    syntax enable 
+endif
 
 try
     colorscheme desert
@@ -139,8 +167,10 @@ if has("gui_running")
     set guitablabel=%M\ %t
 endif
 
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
+" Set utf8 as standard encoding
+if &encoding ==# 'latin1' && has('gui_running')
+    set encoding=utf8
+endif
 
 "------------------------------------------------------------------
 " => Files, backups and undo
@@ -171,6 +201,23 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
+set complete-=i
+set nrformats-=octal
+
+" For use with set list when you want to see whitespace characters
+if &listchars ==# 'eol:$'
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+endif
+
+" Delete comment character when joining commented lines
+if v:version > 703 || v:version == 703 && has("patch541")
+  set formatoptions+=j 
+endif
+
+" Load matchit.vim, but only if the user hasn't installed a newer version.
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+  runtime! macros/matchit.vim
+endif
 
 "------------------------------------------------------------------
 " => Visual mode related
