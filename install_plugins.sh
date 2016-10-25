@@ -62,10 +62,10 @@ function check_ctrlp {
 
     echo "CtrlP Plugin: "
 
-    check_dir_exists $CTRLP_PATH
+    check_dir_exists $CTRLP_DIR
     if [ "$?" -eq 1 ]; then
         echo "Downloading CtrlP Plugin"
-        git clone $CTRLP_GIT $CTRLP_PATH
+        git clone $CTRLP_GIT $CTRLP_DIR
     else
         echo "CtrlP present"
     fi
