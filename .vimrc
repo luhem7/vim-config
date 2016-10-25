@@ -1,15 +1,15 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 " => Windows git bash xterm mapping 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 " Mapping the <M-> shortcuts in vim to the actual characters 
 " sent by xterm in git bash on windows
 set <M-j>=j
 set <M-k>=k
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 " => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 " Sets how many lines of history VIM has to remember
 set history=500
 
@@ -28,9 +28,9 @@ let mapleader = " "
 " Fast saving here
 nmap <leader>w :w!<cr>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 " => VIM user interface
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
@@ -100,9 +100,9 @@ set nu
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 " => Colors and Fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 if has("gui_running")
   if has("gui_gtk2")
     set guifont=Inconsolata\ 12
@@ -134,17 +134,17 @@ endif
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 " => Files, backups and undo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
 set nowb
 set noswapfile
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 " => Text, tab and indent related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 " Use spaces instead of tabs
 set expandtab
 
@@ -164,17 +164,17 @@ set si "Smart indent
 set wrap "Wrap lines
 
 
-""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 " => Visual mode related
-""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
 " vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 " vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 " => Moving around, tabs, windows and buffers
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 " Close the current buffer
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
 
@@ -214,18 +214,18 @@ endtry
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 " => Status line
-""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 " Always show the status line
 set laststatus=2
 
 " Format the status line
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 " => Editing mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
@@ -244,9 +244,9 @@ endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 "Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
 
@@ -257,9 +257,9 @@ map <leader>sa zg
 map <leader>s? z=
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 " => Misc
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
@@ -274,9 +274,9 @@ map <leader>pp :setlocal paste!<cr>
 
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 " => Helper functions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
@@ -330,20 +330,20 @@ function! <SID>BufcloseCloseIt()
     endif
 endfunction
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 " => Setting custom brackets matching options. No idea why has
 " to be at the bottom to actually work. Putting it higher up
 " is just ignoring it
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 
 " Show matching brackets when text indicator is over them
 set showmatch 
 " Bracket matching color options
 hi MatchParen cterm=underline ctermbg=none ctermfg=white
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 " => Vim pathogen plugin
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------
 try
     execute pathogen#infect()
 catch
