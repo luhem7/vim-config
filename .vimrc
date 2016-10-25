@@ -1,11 +1,19 @@
 "------------------------------------------------------------------
+" => Vim pathogen plugin
+"------------------------------------------------------------------
+try
+    execute pathogen#infect()
+catch
+    echoerr 'Pathogen plugin not detected or misconfigured'
+endtry
+
+"------------------------------------------------------------------
 " => Windows git bash xterm mapping 
 "------------------------------------------------------------------
 " Mapping the <M-> shortcuts in vim to the actual characters 
 " sent by xterm in git bash on windows
 set <M-j>=j
 set <M-k>=k
-
 
 "------------------------------------------------------------------
 " => General
@@ -340,15 +348,3 @@ endfunction
 set showmatch 
 " Bracket matching color options
 hi MatchParen cterm=underline ctermbg=none ctermfg=white
-
-"------------------------------------------------------------------
-" => Vim pathogen plugin
-"------------------------------------------------------------------
-try
-    execute pathogen#infect()
-catch
-    echoerr 'Pathogen plugin not detected or misconfigured'
-endtry
-
-
-
