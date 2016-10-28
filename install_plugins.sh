@@ -119,7 +119,10 @@ function f_main {
     echo $LINE
     check_git_repo altercation/vim-colors-solarized.git
     echo $LINE
-
+    check_git_repo tpope/vim-surround.git
+    echo $LINE
+    check_git_repo scrooloose/nerdcommenter.git
+    echo $LINE
 }
 
 f_main
