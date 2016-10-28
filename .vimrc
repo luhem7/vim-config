@@ -156,9 +156,12 @@ if has('syntax') && !exists('g:syntax_on')
     syntax enable 
 endif
 
+" Custom color scheme
 try
-    colorscheme desert
+    set background=light
+    colorscheme solarized 
 catch
+    silent! colorscheme desert
 endtry
 
 set background=dark

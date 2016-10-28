@@ -51,7 +51,9 @@ function get_repo_name {
 
 function check_git_repo {
     # $1 = full repo name; example: ctrlpvim/ctrlp.vim.git
-    
+    # $2 = (optional) If parameter is present, will attempt to load helptags
+    # returns 1 if the git repo was downloded or 0 if not
+     
     REPO_NAME=$(get_repo_name $1)
     REPO_DIR=$BUNDLE_DIR$REPO_NAME
     REPO_DIR=${REPO_DIR%.git}
@@ -65,11 +67,20 @@ function check_git_repo {
     if [ "$?" -eq 1 ]; then
         echo "Downloading "$1
         git clone $REPO_URL
+
+        if [ ! "$2" == "" ]; then
+            echo "Attempting to load helptags"
+            vim -u NONE -c "helptags "$REPO_DIR -c q
+        fi
+
+        cd -
+        return 1
     else
         echo $1" present"
     fi
 
     cd -
+    return 0
 }
 
 function check_pathogen {
@@ -86,6 +97,12 @@ function check_pathogen {
    create_dir_if_absent $BUNDLE_DIR
 }
 
+function check_solarized {
+    if [ "$?" -eq 1 ]; then
+        check_dir_exists $REPO_DIR 
+    fi
+}
+
 function f_main {
     echo $LINE
     create_dir_if_absent $VIM_DIR
@@ -96,7 +113,13 @@ function f_main {
     #Checking if pathogen vim plugin is present
     check_pathogen
     echo $LINE
-    check_git_repo ctrlpvim/ctrlp.vim.git
+    check_git_repo ctrlpvim/ctrlp.vim.git 1
+    echo $LINE
+    check_git_repo tpope/vim-fugitive.git 1
+    echo $LINE
+    check_git_repo altercation/vim-colors-solarized.git
+    echo $LINE
+
 }
 
 f_main
