@@ -7,7 +7,6 @@ fi
 
 AUTOLOAD_DIR=$VIM_DIR"autoload/"
 BUNDLE_DIR=$VIM_DIR"bundle/"
-PATHOGEN_LOC=$AUTOLOAD_DIR"pathogen.vim"
 
 LINE="--------------------------"
 
@@ -33,7 +32,7 @@ function check_file_exists {
 }
 
 function check_dir_exists {
-    echo "Checking to see if "$1"directory is present."
+    echo "Checking to see if "$1" directory is present."
     if [ ! -d $1 ]; then
         echo "Directory was missing"
         return 1
@@ -43,8 +42,39 @@ function check_dir_exists {
     fi
 }
 
+function get_repo_name {
+    OIFS=$IFS
+    IFS="/" read -a MYARRAY <<< "$1"
+    echo ${MYARRAY[1]}
+    IFS=$OIFS
+}
+
+function check_git_repo {
+    # $1 = full repo name; example: ctrlpvim/ctrlp.vim.git
+    
+    REPO_NAME=$(get_repo_name $1)
+    REPO_DIR=$BUNDLE_DIR$REPO_NAME
+    REPO_DIR=${REPO_DIR%.git}
+    REPO_URL="https://github.com/"$1
+
+    cd $BUNDLE_DIR
+
+    echo "Checking if git repo "$1" is already downloaded"
+
+    check_dir_exists $REPO_DIR 
+    if [ "$?" -eq 1 ]; then
+        echo "Downloading "$1
+        git clone $REPO_URL
+    else
+        echo $1" present"
+    fi
+
+    cd -
+}
+
 function check_pathogen {
     PATHOGEN_DL="https://tpo.pe/pathogen.vim"
+    PATHOGEN_LOC=$AUTOLOAD_DIR"pathogen.vim"
     echo "Checking to see if pathogen vim file is present."
     if [ ! -f $PATHOGEN_LOC ]; then
         echo "Pathogen missing, downloading from "$PATHOGEN_DL
@@ -56,30 +86,17 @@ function check_pathogen {
    create_dir_if_absent $BUNDLE_DIR
 }
 
-function check_ctrlp {
-    CTRLP_DIR=$BUNDLE_DIR"ctrlp.vim/"
-    CTRLP_GIT="https://github.com/ctrlpvim/ctrlp.vim.git"
+function f_main {
+    echo $LINE
+    create_dir_if_absent $VIM_DIR
+    echo $LINE
+    create_dir_if_absent $AUTOLOAD_DIR
+    echo $LINE
 
-    echo "CtrlP Plugin: "
-
-    check_dir_exists $CTRLP_DIR
-    if [ "$?" -eq 1 ]; then
-        echo "Downloading CtrlP Plugin"
-        git clone $CTRLP_GIT $CTRLP_DIR
-    else
-        echo "CtrlP present"
-    fi
+    #Checking if pathogen vim plugin is present
+    check_pathogen
+    echo $LINE
+    check_git_repo ctrlpvim/ctrlp.vim.git
 }
 
-echo $LINE
-create_dir_if_absent $VIM_DIR
-echo $LINE
-create_dir_if_absent $AUTOLOAD_DIR
-echo $LINE
-
-#Checking if pathogen vim plugin is present
-check_pathogen
-echo $LINE
-check_ctrlp
-echo $LINE
-
+f_main
