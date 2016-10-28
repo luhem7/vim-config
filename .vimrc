@@ -42,6 +42,10 @@ if has('autocmd')
     filetype indent on
 endif
 
+" By default vim treats .md files as Modula 2, here always treat
+" .md files as if they are markdown files
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
 " Set to auto read when a file is changed from the outside
 set autoread
 
