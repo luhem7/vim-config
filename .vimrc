@@ -178,12 +178,16 @@ if &encoding ==# 'latin1' && has('gui_running')
 endif
 
 "------------------------------------------------------------------
-" => Files, backups and undo
+" => Files, backups, undo and session management
 "------------------------------------------------------------------
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
 set nowb
 set noswapfile
+
+"Shortcut keys to save current session and load session
+nnoremap <leader>ss :mksession! ~/vimsession.vim<cr>
+nnoremap <leader>sl :so ~/vimsession.vim<cr>
 
 "------------------------------------------------------------------
 " => Text, tab and indent related
@@ -311,19 +315,6 @@ nmap <Leader>p "+p
 nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
-
-"------------------------------------------------------------------
-"Spell checking
-"------------------------------------------------------------------
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
-
-" Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
-
 
 "------------------------------------------------------------------
 " => Misc
