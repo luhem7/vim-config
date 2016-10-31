@@ -390,6 +390,12 @@ function! <SID>BufcloseCloseIt()
 endfunction
 
 "------------------------------------------------------------------
+" => Plugin options
+"------------------------------------------------------------------
+" vim-fugitive open Gdiff in vertical splits
+set diffopt+=vertical
+
+"------------------------------------------------------------------
 " => Setting custom brackets matching options. No idea why has
 " to be at the bottom to actually work. Putting it higher up
 " is just ignoring it
