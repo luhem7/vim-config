@@ -138,6 +138,9 @@ set nu
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
+"make netrw use the tree view by default
+let g:netrw_liststyle=3
+
 "------------------------------------------------------------------
 " => Colors and Fonts
 "------------------------------------------------------------------
