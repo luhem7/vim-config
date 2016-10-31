@@ -9,3 +9,5 @@
 "the contents of this file run automatically instead of needing someone to run this file
 
 helptags ~/vimfiles/bundle/ctrlp.vim/doc
+helptags ~/vimfiles/bundle/vim-fugitive/doc
+helptags ~/vimfiles/bundle/vim-eunuch/doc
