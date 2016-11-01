@@ -135,6 +135,13 @@ set foldcolumn=1
 "Always show line numbers:
 set nu
 
+"Line numbers handling:
+au FocusLost * :set number
+au FocusGained * :set relativenumber
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
+
+
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
