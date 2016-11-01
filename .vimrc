@@ -235,6 +235,8 @@ if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
   runtime! macros/matchit.vim
 endif
 
+" Python specific, ensure that text width does not exceed 80 chars
+au BufNewFile,BufRead *.py set textwidth=79
 "------------------------------------------------------------------
 " => Visual mode related
 "------------------------------------------------------------------
@@ -407,7 +409,7 @@ endfunction
 " vim-fugitive open Gdiff in vertical splits
 set diffopt+=vertical
 
-" For the SimplyFold plugin:
+" For the SimpylFold plugin:
 " Don't want to see your docstrings folded
 let g:SimpylFold_fold_docstring = 0
 " Don't want to see your imports folded

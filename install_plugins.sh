@@ -127,6 +127,8 @@ function f_main {
     echo $LINE
     check_git_repo tmhedberg/SimpylFold
     echo $LINE
+    check_git_repo vim-scripts/indentpython.vim
+    echo $LINE
 }
 
 f_main
