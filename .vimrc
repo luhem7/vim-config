@@ -141,6 +141,10 @@ map <silent> <leader><cr> :noh<cr>
 "make netrw use the tree view by default
 let g:netrw_liststyle=3
 
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+
 "------------------------------------------------------------------
 " => Colors and Fonts
 "------------------------------------------------------------------
@@ -256,8 +260,7 @@ map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext 
-
+map <leader>t<leader> :tabnext navigation commands
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
 nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
@@ -403,6 +406,12 @@ endfunction
 "------------------------------------------------------------------
 " vim-fugitive open Gdiff in vertical splits
 set diffopt+=vertical
+
+" For the SimplyFold plugin:
+" Don't want to see your docstrings folded
+let g:SimpylFold_fold_docstring = 0
+" Don't want to see your imports folded
+let g:SimpylFold_fold_import = 0
 
 "------------------------------------------------------------------
 " => Setting custom brackets matching options. No idea why has

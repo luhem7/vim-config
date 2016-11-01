@@ -125,6 +125,8 @@ function f_main {
     echo $LINE
     check_git_repo tpope/vim-eunuch.git 1
     echo $LINE
+    check_git_repo tmhedberg/SimpylFold
+    echo $LINE
 }
 
 f_main
