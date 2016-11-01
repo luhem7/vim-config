@@ -129,6 +129,11 @@ function f_main {
     echo $LINE
     check_git_repo vim-scripts/indentpython.vim
     echo $LINE
+    check_git_repo scrooloose/syntastic
+    echo $LINE
+    check_git_repo nvie/vim-flake8
+    echo $LINE
+
 }
 
 f_main
