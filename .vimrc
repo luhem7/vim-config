@@ -184,6 +184,8 @@ if &encoding ==# 'latin1' && has('gui_running')
     set encoding=utf8
 endif
 
+let python_highlight_all=1
+
 "------------------------------------------------------------------
 " => Files, backups, undo and session management
 "------------------------------------------------------------------
