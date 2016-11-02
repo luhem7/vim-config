@@ -132,15 +132,11 @@ set tm=500
 " Add a bit extra margin to the left
 set foldcolumn=1
 
-"Always show line numbers:
-set nu
-
 "Line numbers handling:
 au FocusLost * :set number
 au FocusGained * :set relativenumber
 autocmd InsertEnter * :set number
 autocmd InsertLeave * :set relativenumber
-
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
@@ -161,7 +157,7 @@ if has("gui_running")
   elseif has("gui_macvim")
     set guifont=Menlo\ Regular:h14
   elseif has("gui_win32")
-    set guifont=Consolas:h8:cANSI
+    set guifont=Consolas:h10:cANSI
   endif
 endif
 
