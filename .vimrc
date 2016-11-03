@@ -411,15 +411,23 @@ endfunction
 "------------------------------------------------------------------
 " => Plugin options
 "------------------------------------------------------------------
-" vim-fugitive open Gdiff in vertical splits
+" -- vim-fugitive open Gdiff in vertical splits
 set diffopt+=vertical
 
-" For the SimpylFold plugin:
+" -- For the SimpylFold plugin:
 " Don't want to see your docstrings folded
 let g:SimpylFold_fold_docstring = 0
 " Don't want to see your imports folded
 let g:SimpylFold_fold_import = 0
 
+" -- vim-go plugin
+let g:go_disable_autoinstall = 0
+" Highlight
+let g:go_highlight_functions = 1  
+let g:go_highlight_methods = 1  
+let g:go_highlight_structs = 1  
+let g:go_highlight_operators = 1  
+let g:go_highlight_build_constraints = 1  
 "------------------------------------------------------------------
 " => Setting custom brackets matching options. No idea why has
 " to be at the bottom to actually work. Putting it higher up

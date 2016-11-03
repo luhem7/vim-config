@@ -135,6 +135,8 @@ function f_main {
     echo $LINE
     check_git_repo tpope/vim-vinegar
     echo $LINE
+    check_git_repo fatih/vim-go.git
+    echo $LINE
 }
 
 f_main
