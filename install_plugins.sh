@@ -137,6 +137,8 @@ function f_main {
     echo $LINE
     check_git_repo fatih/vim-go.git
     echo $LINE
+    check_git_repo shougo/neocomplete.vim.git
+    echo $LINE
 }
 
 f_main
