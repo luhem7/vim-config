@@ -133,7 +133,8 @@ function f_main {
     echo $LINE
     check_git_repo nvie/vim-flake8
     echo $LINE
-
+    check_git_repo tpope/vim-vinegar
+    echo $LINE
 }
 
 f_main
