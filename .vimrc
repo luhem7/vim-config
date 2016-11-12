@@ -70,6 +70,11 @@ set autoread
 "------------------------------------------------------------------
 " => VIM user interface
 "------------------------------------------------------------------
+if has("gui_running")
+    set guioptions -=mr
+endif
+
+
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
@@ -133,6 +138,8 @@ set tm=500
 set foldcolumn=1
 
 "Line numbers handling:
+set number
+set relativenumber
 au FocusLost * :set number
 au FocusGained * :set relativenumber
 autocmd InsertEnter * :set number
@@ -151,9 +158,10 @@ set foldlevel=99
 "------------------------------------------------------------------
 " => Colors and Fonts
 "------------------------------------------------------------------
+" Fonts
 if has("gui_running")
   if has("gui_gtk2")
-    set guifont=Inconsolata\ 12
+    set guifont=Inconsolata\ 10
   elseif has("gui_macvim")
     set guifont=Menlo\ Regular:h14
   elseif has("gui_win32")
@@ -167,14 +175,18 @@ if has('syntax') && !exists('g:syntax_on')
 endif
 
 " Custom color scheme
-try
-    set background=light
-    colorscheme solarized 
-catch
-    silent! colorscheme desert
-endtry
+if has("gui_running")
+    try
+        set background=dark
+        colorscheme solarized 
+    catch
+        silent! colorscheme desert
+    endtry
+endif
+"colorscheme desert
 
 " Set extra options when running in GUI mode
+
 if has("gui_running")
     set guioptions-=T
     set guioptions-=e
