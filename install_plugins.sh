@@ -139,6 +139,7 @@ function f_main {
     echo $LINE
     check_git_repo racer-rust/vim-racer.git
     echo $LINE
+    check_git_repo rust-lang/rust.vim
 }
 
 f_main
