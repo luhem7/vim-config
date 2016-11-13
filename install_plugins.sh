@@ -137,7 +137,7 @@ function f_main {
     echo $LINE
     check_git_repo fatih/vim-go.git
     echo $LINE
-    check_git_repo shougo/neocomplete.vim.git
+    check_git_repo racer-rust/vim-racer.git
     echo $LINE
 }
 

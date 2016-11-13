@@ -444,6 +444,11 @@ let g:go_highlight_build_constraints = 1
 " -- neocomplete
 let g:neocomplete#enable_at_startup = 1
 
+" -- vim-racer for rust
+set hidden
+let $RUST_SRC_PATH="~/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/"
+let g:racer_cmd = "/usr/bin/racer"
+
 "------------------------------------------------------------------
 " => Setting custom brackets matching options. No idea why has
 " to be at the bottom to actually work. Putting it higher up
