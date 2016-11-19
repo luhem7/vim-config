@@ -254,6 +254,12 @@ endif
 
 " Python specific, ensure that text width does not exceed 80 chars
 au BufNewFile,BufRead *.py set textwidth=79
+
+" Show matching brackets when text indicator is over them
+set showmatch 
+set matchtime=0
+" Bracket matching color options
+hi MatchParen cterm=underline ctermbg=none ctermfg=white
 "------------------------------------------------------------------
 " => Visual mode related
 "------------------------------------------------------------------
@@ -455,7 +461,3 @@ let g:racer_cmd = "/usr/bin/racer"
 " is just ignoring it
 "------------------------------------------------------------------
 
-" Show matching brackets when text indicator is over them
-set showmatch 
-" Bracket matching color options
-hi MatchParen cterm=underline ctermbg=none ctermfg=white
